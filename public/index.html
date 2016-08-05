@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+  <head>
+    <meta charset="utf-8">
+    <title>ecommerce stuff</title>
+    <link rel="stylesheet" href="./assets/styles/style.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body ng-controller="homeCtrl">
+    <button type="button" name="button" ng-click="getAllProducts()">Click Me for Cool Stuff</button>
+  <section class="productswrapper">
+    <div class="stuff" ng-repeat="stuff in products">
+  <ul>
+    <li>ID: {{stuff.id}}</li>
+    <li>Name: {{stuff.name}}</li>
+    <li>Price: {{stuff.price}}</li>
+    <li>Type: {{stuff.type}}</li>
+    <li>Description: {{stuff.description}}</li>
+  </ul>
+  <button type="button" name="button" ng-click="deleteProduct(stuff.id)">Delete</button>
+</div>
+</section>
+<div class="">
+<section class="inputwrapper">
+  <input type="text" name="name" value="" ng-model="newProduct.name">
+  <input type="text" name="name" value="" ng-model="newProduct.description">
+  <input type="text" name="name" value="" ng-model="newProduct.price">
+  <input type="text" name="name" value="" ng-model="newProduct.type">
+</section>
+  <button type="button" name="button" class="productbutton" ng-click="addProduct(newProduct)">Add Product</button>
+</div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+  <script src='./app/app.module.js'></script>
+  <script src=./app/component/home/homeCtrl.js></script>
+  <script src=./app/component/home/homeSrvc.js></script>
+</body>
+</html>
