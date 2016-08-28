@@ -6,7 +6,8 @@ angular.module('app')
         method: 'GET',
         url: '/products'
       }).then(function(response){
-        return response.data
+        console.log(response.data)
+        return response.data;
       });
 
     },

@@ -8,18 +8,20 @@ var connectionString = 'postgres://MichaelDavis@localhost/front_to_back_dono'
 var app = module.exports = express();
 
 var massiveInstance = massive.connectSync({
-  connectionString: connectionString
+  connectionString: connectionString,
+  scripts: './db'
 });
 app.set('db', massiveInstance);
 var db = app.get('db');
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static(__dirname + './../public'));
+app.use(express.static(__dirname + '/../public'));
 
 
 //get all products
-app.get('/products/', function(req, res, next){
+app.get('/products', function(req, res, next){
+  console.log('what');
   db.get_all_products(function(err, products){
     res.status(200).json(products);
   });
@@ -55,7 +57,7 @@ app.delete('/products/:id', function(req,res,next){
 });
 
 
-app.listen(3000, function(){
+app.listen(4040, function(){
 console.log('listening')
 
 });
